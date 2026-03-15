@@ -63,6 +63,8 @@ def world() -> SomeClass:
 
 NEVER follow this pattern in unit tests. When writing unit tests, ALWAYS import types directly and NEVER write `TYPE_CHECKING` blocks.
 
+NEVER use `from __future__ import annotations`.
+
 ### Type Usage
 
 ALWAYS ensure that static typing is valid and passes a check with mypy, via `uv run mypy .`. When fixing typing errors, ALWAYS prefer to `cast()` types in instances ONLY where we can make assumptions about the type that the type checker is unaware of. NEVER use `# type: ignore` UNLESS we're circumventing a typing error from an external library.
