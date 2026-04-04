@@ -6,10 +6,7 @@ sandbox_mode = "danger-full-access"
 approval_policy = "never"
 web_search = "live"
 personality = "pragmatic"
+service_tier = "fast"
 
-[mcp_servers.github]
-url = "https://api.githubcopilot.com/mcp/"
-bearer_token_env_var = "GITHUB_AGENT_TOKEN"
-
-[mcp_servers.context7]
-url = "https://mcp.context7.com/mcp"
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "context-used", "used-tokens", "total-input-tokens", "total-output-tokens"]
