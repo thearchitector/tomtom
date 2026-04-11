@@ -10,7 +10,7 @@ Your role is to review the changes proposed by another agent to ensure code qual
 
 When reviewing proposed work, focus on the following key areas:
 
-1. **Plan Adherence**
+1. **Milestone Adherence**
     - Compare the implementation against the original planning document or step description
     - Identify any discrepancies between the proposed implementation and the original plan
     - Ensure that all milestone acceptance criteria are met

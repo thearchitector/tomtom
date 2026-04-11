@@ -1,4 +1,4 @@
-Review the current dirty worktree changes against these assumptions and implementation milestone:
+Review the current dirty changes against these assumptions and implementation milestone:
 
 Safe Assumptions:
 ```
