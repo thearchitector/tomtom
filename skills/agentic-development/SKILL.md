@@ -5,6 +5,10 @@ description: Implementation guidelines, coding practices, development processes,
 
 # Agentic Development
 
+## Plan-driven Development
+
+Only follow these steps when implementing a tech spec plan.
+
 1. Implement changes for only the next milestone, following the workflow and language-specific guidelines.
 2. After finishing a milestone and **before** committing, spawn a subagent using [this prompt](assets/request-code-review.txt) (replace word-for-word the `ASSUMPTIONS_INVARIANTS` and `MILESTONE_AND_ACCEPTANCE_CRITERIA` placeholders with their snippets from the tech spec plan). Address any feedback it provides.
 3. Always `git commit` between milestones. Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when writing commit messages. For breaking changes, use the `!` type syntax.
