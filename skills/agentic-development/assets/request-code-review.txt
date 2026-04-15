@@ -1,11 +1,13 @@
-Review the current dirty changes against these assumptions and implementation milestone:
+Review the current dirty changes against the following assumptions/invariants and implementation milestone.
 
-Safe Assumptions:
-```
-{ASSUMPTIONS}
-```
+One-line per finding. Format: `<file_path_from_repo_root>L<line>: <severity> <problem>. <fix>.`
+
+Severity: bug, risk, perf, clear, nit.
+
+Skip praise. Skip obvious. If code look good, say 'LGTM' and stop.
+
+Safe Assumptions / Technical Invariants:
+{ASSUMPTIONS_INVARIANTS}
 
 Milestone:
-```
 {MILESTONE_AND_ACCEPTANCE_CRITERIA}
-```

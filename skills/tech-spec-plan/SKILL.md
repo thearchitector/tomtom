@@ -5,22 +5,26 @@ description: Create a technical specification and implementation plan encompassi
 
 # Technical Specification Plan
 
-Technical specification plans should be a series of milestones, each with concrete tasks. The core requirement of a tech spec plan is that it be SELF-CONTAINED, SELF-SUFFICIENT, JUNIOR-GUIDING, and OUTCOME-FOCUSED. A single stateless agent, or junior human developer, must be able to read your plan from top to bottom and:
+Technical specification plans should be a set of technical invariant and product assumptions, followed by a series of milestones, each with concrete tasks. The core requirement of a tech spec plan is that it be self-contained, self-explanatory, novice-guiding, and outcome-focused. A single stateless agent must be able to read your plan from top to bottom and:
 
 1. understand the core design / changes being proposed, and
 2. produce a working, observable result.
 
-The agent or human executing your will not know any prior knowledge and cannot infer what you meant from your current context. Repeat any assumption you rely on. Do not point to external blogs or docs; if knowledge is required, embed it in the plan itself in your own words.
+The agent executing your will not know any prior knowledge, nor the current context, and cannot infer what you meant. Repeat any assumption you rely on. Do not point to external blogs or docs; if knowledge is required, embed it in the plan itself.
 
 ## Planning Process
 
 You must follow this process:
 
-1. spawn a subagent to understand the prompt, product requirements, and design directions using the `$grill-me` skill.
-2. the draft solution, using all available MCPs to ground analysis, based on the subagent's takeaways.
+1. spawn a subagent to understand and synthesize the prompt, product requirements, and design directions using the `$grill-me` skill.
+2. based on the subagent's takeaways, draft solutions, using all available MCPs to ground analysis.
 3. output the specification as a markdown file in subdirectory of `plans/`.
+4. ask and wait for human approval or feedback, repeating steps 1-4 to revise the in-progress plan until the human approves.
+5. once the human approves the plan, write `pragma: no ai` to the top of the plan file. This will mark the plan as complete and immutable.
 
 Files that include a `pragma: no ai` comment are authoritative files, and should be used as anchors and sources of truth when designing solutions and creating milestones.
+
+You must include, before the first milestone, a list of technical invariants and product assumptions based on the initial subagent synthesis.
 
 ## Milestones
 
@@ -36,17 +40,17 @@ Milestones and their tasks should always be ordered by dependency, with prerequi
 
 ### No Placeholders
 
-Every task must contain the actual content an engineer needs. These are plan failures - never write them:
+Every task must contain the actual content the executing agent needs. These are plan failures - never write them:
 
 - "TBD", "TODO", "implement later", "fill in details"
 - "Add appropriate error handling" / "add validation" / "handle edge cases"
 - "Write tests for the above" (without actual test code)
 - "Similar to Task N" (repeat the code — the engineer may be reading tasks out of order)
 - Steps that describe what to do without showing how (code blocks required for code steps)
-- References to types, functions, or methods not defined in any task
+- References to new types, functions, or methods not defined in any task
 
 ## Output
 
-Plans must follow this template, be put in `plans/` directory of the active repo, and be named `plan.md`. If there is already a `plan.md` file in the feature directory, the file name should be `plan.N.md`, where `N` is the next increment after the current largest increment. NEVER replace the contents of an existing plan file.
+Plans must be put in `plans/` directory of the active repo, and be named `plan.md`. If there is already a `plan.md` file in the directory, the file name should be `plan.N.md`, where `N` is the next increment after the current largest increment. NEVER replace the contents of an unrelated existing plan file.
 
 If you need to cite something, include either a link to the source (e.g., a URL or file and line number) or a small fence block. Always use paths relative to the repository being referenced (e.g., `datagraph/datagraph/io.py`, not `../../../datagraph/datagraph/io.py`), and never use absolute paths.
