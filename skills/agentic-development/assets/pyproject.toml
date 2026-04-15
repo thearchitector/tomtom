@@ -33,8 +33,8 @@ extend-include = ["*.md"]
 extend-exclude = ["plans/"]
 
 [tool.ruff.lint]
-extend-select = ["B", "I", "ASYNC", "TC", "SIM", "PL"]
-extend-ignore = ["UP037", "PLR2004", "PLR0911", "PLR0912"]
+extend-select = ["B", "I", "ASYNC", "TC", "SIM", "PL", "TID", "PT", "PTH", "PERF"]
+extend-ignore = ["UP037", "PLR2004", "PLR0911", "PLR0912", "TID252"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["TC", "PLR0913"]
@@ -46,6 +46,9 @@ quote-annotations = true
 runtime-evaluated-base-classes = ["pydantic.BaseModel"]
 # include only if fastapi is a used dependency
 runtime-evaluated-decorators = ["fastapi.APIRouter.post", "fastapi.APIRouter.put", "fastapi.APIRouter.delete", "fastapi.APIRouter.get"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"importlib.import_module".msg = "Do not dynamically import modules. Explicitly import them at the top of the file."
 
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false
