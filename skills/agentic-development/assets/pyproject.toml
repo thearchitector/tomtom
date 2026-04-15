@@ -13,8 +13,10 @@ asyncio_default_fixture_loop_scope = "session"
 asyncio_default_test_loop_scope = "session"
 
 [tool.coverage.run]
-concurrency = ["greenlet"]
 branch = true
+
+[tool.coverage.report]
+exclude_also = ["if TYPE_CHECKING:"]
 
 [tool.mypy]
 python_version = "3.13"
@@ -27,10 +29,12 @@ ignore = [ "tests" ]
 [tool.ruff]
 target-version = "py313"
 unsafe-fixes = false
+extend-include = ["*.md"]
+extend-exclude = ["plans/"]
 
 [tool.ruff.lint]
 extend-select = ["B", "I", "ASYNC", "TC", "SIM", "PL"]
-extend-ignore = ["PLR2004", "PLR0911", "PLR0912"]
+extend-ignore = ["UP037", "PLR2004", "PLR0911", "PLR0912"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["TC", "PLR0913"]
@@ -38,6 +42,9 @@ extend-ignore = ["PLR2004", "PLR0911", "PLR0912"]
 [tool.ruff.lint.flake8-type-checking]
 strict = true
 quote-annotations = true
+# include only if pydantic is a used dependency
+runtime-evaluated-base-classes = ["pydantic.BaseModel"]
+# include only if fastapi is a used dependency
 runtime-evaluated-decorators = ["fastapi.APIRouter.post", "fastapi.APIRouter.put", "fastapi.APIRouter.delete", "fastapi.APIRouter.get"]
 
 [tool.ruff.lint.isort]
@@ -46,3 +53,4 @@ split-on-trailing-comma = false
 [tool.ruff.format]
 docstring-code-format = true
 skip-magic-trailing-comma = true
+preview = true

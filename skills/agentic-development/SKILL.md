@@ -20,4 +20,4 @@ description: Implementation guidelines, coding practices, development processes,
 
 ## Language-specific implementation guidelines
 
-When making changes to Python code, follow our [Python development guidelines](references/python.md).
+When making changes to Python code, follow these [Python development guidelines](references/python.md).

@@ -1,20 +1,14 @@
 # Python guidelines
 
-- Initially, always make sure the repo's `pyproject.toml` supersets the same configurations listed in [our project template](assets/pyproject.toml).
-- Always validate tests by running `pytest` from within the freshly built repository docker container before finishing:
-
-  ```bash
-  $ docker compose down --volumes
-  $ docker compose up --build -d
-  $ docker compose exec {service container} pytest
-    ```
-
+- Initially, always make sure the repo's `pyproject.toml` supersets the same configurations listed in [the project template](assets/pyproject.toml).
+- Always validate tests by running `uv run pytest`
 - Always lint changes with `uv run prek run -a`.  Address any failures and warnings prior to finishing.
 
 ## Unit testing
 
 - Use `pytest` to implement unit tests, keeping tests DRY by using properly scoped fixtures.
 - Split tests into logical groups in different files; never nest tests within classes within a single file.
+- Place fixtures in the files they're used. If a fixture can be used by multiple test file in the same directory, place it a `conftest.py` file. If it can be used by multiple directories, place it in a grandparent `conftest.py` file. Continue upwards, placing fixtures in the main `conftest.py` file only as a last resort.
 - Parameterized tests should always include short case `ids`, and test names themselves should be descriptive but concise and only use `[A-Za-z0-9-]`.
 - Use `pytest-asyncio` for async tests and `pytest-cov` to validate coverage of test cases.
 
