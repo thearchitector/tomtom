@@ -16,7 +16,7 @@ The agent executing your will not know any prior knowledge, nor the current cont
 
 You must follow this process:
 
-1. spawn a subagent to understand and synthesize the prompt, product requirements, and design directions using the `$grill-me` skill.
+1. spawn a subagent to understand and synthesize the prompt, product requirements, and design directions using the `$grill-me` skill. The subagent MUST ask the human questions.
 2. based on the subagent's takeaways, draft solutions, using all available MCPs to ground analysis.
 3. output the specification as a markdown file in subdirectory of `plans/`.
 4. ask and wait for human approval or feedback, repeating steps 1-4 to revise the in-progress plan until the human approves.

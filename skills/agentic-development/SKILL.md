@@ -1,13 +1,13 @@
 ---
 name: agentic-development
-description: Implementation guidelines, coding practices, development processes, and git workflows. Use when making any and all code changes.
+description: Implementation guidelines, coding practices, development processes, and git workflows. Use when making any and all code changes. Do NOT use this if you're simply referencing code or are generating snippets within plans.
 ---
 
 # Agentic Development
 
 ## Plan-driven Development
 
-Only follow these steps when implementing a tech spec plan.
+Follow these steps when implementing a tech spec plan:
 
 1. Implement changes for only the next milestone, following the workflow and language-specific guidelines.
 2. After finishing a milestone and **before** committing, spawn a subagent using [this prompt](assets/request-code-review.txt) (replace word-for-word the `ASSUMPTIONS_INVARIANTS` placeholder with a snippet from the tech spec plan). Address any feedback it provides.
