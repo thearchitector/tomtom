@@ -1,53 +1,26 @@
 # Python guidelines
 
-- Initially, always make sure the repo's `pyproject.toml` supersets the same configurations listed in [the project template](assets/pyproject.toml).
+Initially:
+
+1. always make sure the repo's `pyproject.toml` supersets the same configurations listed in [the project template](assets/pyproject.toml).
+2. always make sure the repo's prek config superses the same one [here](assets/.pre-commit-config.yaml).
+
+Then:
+
 - Always validate tests by running `uv run pytest`
 - Always lint changes with `uv run prek run -a`.  Address any failures and warnings prior to finishing.
 
 ## Unit testing
 
 - Use `pytest` to implement unit tests, keeping tests DRY by using properly scoped fixtures.
+- Use `pytest-asyncio` for async tests and `pytest-cov` + `pytest-crap` to validate coverage of test cases.
 - Split tests into logical groups in different files; never nest tests within classes within a single file.
 - Place fixtures in the files they're used. If a fixture can be used by multiple test file in the same directory, place it a `conftest.py` file. If it can be used by multiple directories, place it in a grandparent `conftest.py` file. Continue upwards, placing fixtures in the main `conftest.py` file only as a last resort.
 - Parameterized tests should always include short case `ids`, and test names themselves should be descriptive but concise and only use `[A-Za-z0-9-]`.
-- Use `pytest-asyncio` for async tests and `pytest-cov` to validate coverage of test cases.
 
 ## Implementation patterns
 
-### Type hints
-
-Always assume you can type according to Python 3.13+ conventions (ie. `type Foo = Bar` to create type aliases), and import generic structure from `collections.abc`. Always try to import as few things as possible during runtime, ideally importing specific items when `TYPE_CHECKING` is true, and never rely on `from __future__ import annotations`:
-
-```python
-from typing import TYPE_CHECKING
-
-from some_module import SomeClass
-
-if TYPE_CHECKING:
-    from collections.abc import Callable
-    from typing import Any
-
-
-# `Callable` and `Any` are only used for typing, so their imports exist only in the TYPE_CHECKING block,
-# and they are forward referenced in the function signature.
-def foo(bar: "Callable[[Any], Any]") -> None:
-    pass
-
-
-# `list` is a builtin type, so no import is necessary and thus it can be used directly. `Any` is only used
-# for typing, so it is forward referenced in the function signature.
-def hello(tomato: list["Any"]) -> str | None:
-    pass
-
-
-# `SomeClass` is used during runtime, so it does not need to be forward referenced.
-def world() -> SomeClass:
-    return SomeClass()
-```
-
-When writing unit tests, always import types directly and never write `TYPE_CHECKING` blocks.
-
-### Type usage
+### Type casting
 
 When fixing typing errors, use `cast()` in instances where we can make assertions about the type that the type checker is unaware of. Never use `assert` to narrow typing, nor `# type: ignore` unless we're circumventing a typing error from an external library; if there is an internal typing failure that requires type ignore, always confirm the specific case with the user.
 

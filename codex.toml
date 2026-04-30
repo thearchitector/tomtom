@@ -1,4 +1,4 @@
-model = "gpt-5.4"
+model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 plan_mode_reasoning_effort = "xhigh"
 
@@ -8,12 +8,47 @@ web_search = "live"
 personality = "pragmatic"
 service_tier = "fast"
 
+[features]
+codex_hooks = true
+fast_mode = true
+
 [tui]
 status_line = ["model-with-reasoning", "current-dir", "context-used", "used-tokens", "total-input-tokens", "total-output-tokens"]
 
-[mcp_servers.github]
-url = "https://api.githubcopilot.com/mcp/"
-bearer_token_env_var = "GITHUB_AGENT_TOKEN"
+[analytics]
+enabled = false
 
-[mcp_servers.context7]
-url = "https://mcp.context7.com/mcp"
+[feedback]
+enabled = false
+
+[mcp_servers.context-mode]
+command = "context-mode"
+
+[hooks]
+
+[[hooks.PreToolUse]]
+matcher = "local_shell|shell|shell_command|exec_command|container.exec|Bash|Shell|grep_files|mcp__plugin_context-mode_context-mode__ctx_execute|mcp__plugin_context-mode_context-mode__ctx_execute_file|mcp__plugin_context-mode_context-mode__ctx_batch_execute"
+
+[[hooks.PreToolUse.hooks]]
+type = "command"
+command = "context-mode hook codex pretooluse"
+
+[[hooks.PostToolUse]]
+[[hooks.PostToolUse.hooks]]
+type = "command"
+command = "context-mode hook codex posttooluse"
+
+[[hooks.SessionStart]]
+[[hooks.SessionStart.hooks]]
+type = "command"
+command = "context-mode hook codex sessionstart"
+
+[[hooks.UserPromptSubmit]]
+[[hooks.UserPromptSubmit.hooks]]
+type = "command"
+command = "context-mode hook codex userpromptsubmit"
+
+[[hooks.Stop]]
+[[hooks.Stop.hooks]]
+type = "command"
+command = "context-mode hook codex stop"

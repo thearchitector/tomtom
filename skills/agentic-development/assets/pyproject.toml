@@ -1,8 +1,15 @@
 [dependency-groups]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+    "pytest-crap"
+]
 local = [
     "ruff",
     "mypy",
     "prek",
+    "skylos",
 ]
 
 [tool.pytest.ini_options]
@@ -19,7 +26,6 @@ branch = true
 exclude_also = ["if TYPE_CHECKING:"]
 
 [tool.mypy]
-python_version = "3.13"
 strict = true
 exclude = ["^tests/"]
 
@@ -27,21 +33,19 @@ exclude = ["^tests/"]
 ignore = [ "tests" ]
 
 [tool.ruff]
-target-version = "py313"
 unsafe-fixes = false
 extend-include = ["*.md"]
 extend-exclude = ["plans/"]
 
 [tool.ruff.lint]
 extend-select = ["B", "I", "ASYNC", "TC", "SIM", "PL", "TID", "PT", "PTH", "PERF"]
-extend-ignore = ["UP037", "PLR2004", "PLR0911", "PLR0912", "TID252"]
+extend-ignore = ["PLR2004", "PLR0911", "PLR0912", "PLR0913", "TID252"]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["TC", "PLR0913"]
+"tests/**" = ["TC"]
 
 [tool.ruff.lint.flake8-type-checking]
 strict = true
-quote-annotations = true
 # include only if pydantic is a used dependency
 runtime-evaluated-base-classes = ["pydantic.BaseModel"]
 # include only if fastapi is a used dependency
@@ -49,6 +53,7 @@ runtime-evaluated-decorators = ["fastapi.APIRouter.post", "fastapi.APIRouter.put
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
 "importlib.import_module".msg = "Do not dynamically import modules. Explicitly import them at the top of the file."
+"__future__.annotations".msg = "The annotation future statement is disallowed."
 
 [tool.ruff.lint.isort]
 split-on-trailing-comma = false

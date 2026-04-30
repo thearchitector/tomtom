@@ -1,9 +1,0 @@
-Review the current dirty changes against the following safe assumptions/invariants:
-
-{ASSUMPTIONS_INVARIANTS}
-
-One-line per finding. Format: `<file_path_from_repo_root>L<line>: <severity> <problem>. <fix>.`
-
-Severity: bug, risk, perf, clear, nit.
-
-Skip praise. Skip obvious. If code look good, say 'LGTM' and stop.

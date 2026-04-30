@@ -17,7 +17,7 @@ The agent executing your will not know any prior knowledge, nor the current cont
 You must follow this process:
 
 1. spawn a subagent to understand and synthesize the prompt, product requirements, and design directions using the `$grill-me` skill. The subagent MUST ask the human questions.
-2. based on the subagent's takeaways, draft solutions, using all available MCPs to ground analysis.
+2. based on the subagent's takeaways, draft solution milestones, using all available MCPs and skills to ground analysis.
 3. output the specification as a markdown file in subdirectory of `plans/`.
 4. ask and wait for human approval or feedback, repeating steps 1-4 to revise the in-progress plan until the human approves.
 5. once the human approves the plan, write `pragma: no ai` to the top of the plan file. This will mark the plan as complete and immutable.
@@ -51,6 +51,8 @@ Every task must contain the actual content the executing agent needs. These are 
 
 ## Output
 
-Plans must be put in `plans/` directory of the active repo, and be named `plan.md`. If there is already a `plan.md` file in the directory, the file name should be `plan.N.md`, where `N` is the next increment after the current largest increment. NEVER replace the contents of an unrelated existing plan file.
+Use the $caveman skill in ultra mode to write plans.
+
+Plans must be put in `plans/` directory of the active repo, and be named `plan.md`. If there is already a `plan.md` file in the directory, the file name should be `plan.N.md`, where `N` is the next increment after the current largest increment.
 
 If you need to cite something, include either a link to the source (e.g., a URL or file and line number) or a small fence block. Always use paths relative to the repository being referenced (e.g., `datagraph/datagraph/io.py`, not `../../../datagraph/datagraph/io.py`), and never use absolute paths.
