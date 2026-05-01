@@ -62,3 +62,21 @@ split-on-trailing-comma = false
 docstring-code-format = true
 skip-magic-trailing-comma = true
 preview = true
+
+[tool.skylos]
+nesting = 4
+exclude = ["tests", ".ruff_cache"]
+ignore = ["SKY-L027", "SKY-Q701", "SKY-Q802", "SKY-Q803"]
+
+[tool.skylos.gate]
+strict = true
+
+[tool.uv.build-backend]
+# update for the library name
+module-name = "xvalidations"
+module-root = ""
+
+# include only if this is a library
+[build-system]
+requires = ["uv_build>=0.11.8,<0.12.0"]
+build-backend = "uv_build"
