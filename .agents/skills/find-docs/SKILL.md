@@ -24,13 +24,13 @@ Retrieve current documentation and code examples for any library using the Conte
 Make sure the CLI is up to date before running commands:
 
 ```bash
-pnpm install -g ctx7@latest
+npm install -g ctx7@latest
 ```
 
 Or run directly without installing:
 
 ```bash
-pnpx ctx7@latest <command>
+npx ctx7@latest <command>
 ```
 
 ## Workflow
@@ -48,8 +48,6 @@ ctx7 docs <libraryId> <query>
 You MUST call `ctx7 library` first to obtain a valid library ID UNLESS the user explicitly provides a library ID in the format `/org/project` or `/org/project/version`.
 
 IMPORTANT: Do not run these commands more than 3 times per question. If you cannot find what you need after 3 attempts, use the best result you have.
-
-Run Context7 CLI requests outside Codex's default sandbox. If a Context7 CLI command fails with DNS or network errors such as ENOTFOUND, host resolution failures, or fetch failed, rerun it outside the sandbox instead of retrying inside the sandbox.
 
 ## Step 1: Resolve a Library
 

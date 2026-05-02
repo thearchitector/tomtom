@@ -13,6 +13,12 @@
       "skillPath": "skills/caveman-review/SKILL.md",
       "computedHash": "368a26f2b079ffe0d584f48006524f65cf997cb9369411aa8c6ead216dee22eb"
     },
+    "find-docs": {
+      "source": "upstash/context7",
+      "sourceType": "github",
+      "skillPath": "skills/find-docs/SKILL.md",
+      "computedHash": "7601e8e78ee35ea6c8f6558872777ae94442b03c8d37c67d150dc292e80150ba"
+    },
     "grill-me": {
       "source": "mattpocock/skills",
       "sourceType": "github",

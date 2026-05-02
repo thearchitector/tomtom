@@ -16,8 +16,8 @@ The agent executing your will not know any prior knowledge, nor the current cont
 
 You must follow this process:
 
-1. Use the `$grill-me` skill to synthesize the prompt into product requirements and a design direction.
-2. based on the shared understanding, draft solution milestones, using all available MCPs and skills to ground analysis.
+1. Use `$grill-me` interactively with the human before drafting. Ask one question at a time, provide a recommended answer, and wait for each response. Do not continue until the human has answered or explicitly told you to proceed.
+2. based on the final shared understanding, draft solution milestones, using all available MCPs and skills to ground analysis.
 3. output the specification as a markdown file in subdirectory of `plans/`.
 4. ask and wait for human approval or feedback, repeating steps 1-4 to revise the in-progress plan until the human approves.
 5. once the human approves the plan, write `pragma: no ai` to the top of the plan file. This will mark the plan as complete and immutable.
@@ -25,6 +25,21 @@ You must follow this process:
 Files that include a `pragma: no ai` comment are authoritative files, and should be used as anchors and sources of truth when designing solutions and creating milestones.
 
 You must include, before the first milestone, a list of technical invariants and product assumptions based on the initial subagent synthesis.
+
+### Mandatory Grill Gate
+
+Before writing any plan file, you MUST run an interactive `$grill-me` phase with the human.
+
+Rules:
+- Ask exactly one question per assistant turn.
+- Include a recommended answer for each question.
+- Wait for the human’s answer before asking the next question or drafting the plan.
+- Do not treat codebase exploration as a substitute for product/design questions.
+- Codebase exploration may answer only factual repo questions, such as current file layout, existing APIs, dependencies, and tests.
+- Continue grilling until either:
+  - all blocking product/design decisions are resolved, or
+  - the human explicitly says "draft the plan", "stop grilling", "use your judgment", or equivalent.
+- Only after that shared understanding exists may you create or update `plans/plan*.md`.
 
 ## Milestones
 
