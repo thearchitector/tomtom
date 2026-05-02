@@ -5,7 +5,7 @@ description: Create a technical specification and implementation plan encompassi
 
 # Technical Specification Plan
 
-Technical specification plans should be a set of technical invariant and product assumptions, followed by a series of milestones, each with concrete tasks. The core requirement of a tech spec plan is that it be self-contained, self-explanatory, novice-guiding, and outcome-focused. A single stateless agent must be able to read your plan from top to bottom and:
+Technical specification plans should be a technical contract: a set of technical invariant and product assumptions, followed by a series of milestones, each with concrete tasks. The core requirement of a tech spec plan is that it be self-contained, self-explanatory, novice-guiding, and outcome-focused. A single stateless agent must be able to read your plan from top to bottom and:
 
 1. understand the core design / changes being proposed, and
 2. produce a working, observable result.
@@ -46,7 +46,7 @@ Rules:
 Milestones must form the bulk of your plan, and serve to split the implementation into incremental, additive, and independently verifiable changes. They should include:
 
 - a description of the milestone's technical scope.
-- a list of concrete changes and tasks to with specific pseudocode or small illustrative code snippets.
+- a list of concrete tasks
 - acceptance criteria by which to judge success or failure of the milestone.
 
 Never write complete code in the plan. The objective is to communicate, coarsely, the desired structure and direction. The agent or human that implements the plan should still have leeway when it comes to literal implementation, as opposed to copy/pasting the plan's code snippets.
@@ -55,15 +55,39 @@ It can be a good idea to include explicit prototyping milestones in order to de-
 
 Milestones and their tasks should always be ordered by dependency, with prerequisite ones first.
 
+### Implementation-Detail Guard
+
+Plans are technical contracts, not partial implementations. Prefer observable behavior, public interfaces, data shapes, invariants, and acceptance criteria over specific function bodies.
+
+Allowed code fences:
+
+- package/workspace/config snippets needed to establish build shape
+- public API signatures or CLI/API examples
+- JSON/schema/fixture contracts
+- short usage examples for docs
+- exact generated artifacts when the artifact itself is the contract
+
+Avoid code fences for:
+
+- private helper implementations
+- parsing algorithms
+- language binding internals
+- error-conversion plumbing
+- test harness boilerplate
+- speculative implementation sketches
+
+When implementation detail is needed, write `Required behavior:` bullets instead of code. Each bullet must be concrete and observable. The implementing agent may choose function names, helper boundaries, and library-specific APIs unless the name or shape is part of the public contract.
+
+A plan is overfit failure if changing a private helper name or replacing an algorithm with an equivalent implementation would appear to violate the plan. Revise those sections into behavioral requirements.
+
 ### No Placeholders
 
 Every task must contain the actual content the executing agent needs. These are plan failures - never write them:
 
 - "TBD", "TODO", "implement later", "fill in details"
 - "Add appropriate error handling" / "add validation" / "handle edge cases"
-- "Write tests for the above" (without actual test code)
-- "Similar to Task N" (repeat the code — the engineer may be reading tasks out of order)
-- Steps that describe what to do without showing how (code blocks required for code steps)
+- "Write tests for the above" (without enumerated concrete test cases)
+- "Similar to Task N" (repeat — the engineer may be reading tasks out of order)
 - References to new types, functions, or methods not defined in any task
 
 ## Output
