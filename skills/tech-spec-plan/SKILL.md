@@ -16,8 +16,8 @@ The agent executing your will not know any prior knowledge, nor the current cont
 
 You must follow this process:
 
-1. spawn a subagent to understand and synthesize the prompt, product requirements, and design directions using the `$grill-me` skill. The subagent MUST ask the human questions.
-2. based on the subagent's takeaways, draft solution milestones, using all available MCPs and skills to ground analysis.
+1. Use the `$grill-me` skill to synthesize the prompt into product requirements and a design direction.
+2. based on the shared understanding, draft solution milestones, using all available MCPs and skills to ground analysis.
 3. output the specification as a markdown file in subdirectory of `plans/`.
 4. ask and wait for human approval or feedback, repeating steps 1-4 to revise the in-progress plan until the human approves.
 5. once the human approves the plan, write `pragma: no ai` to the top of the plan file. This will mark the plan as complete and immutable.
@@ -30,9 +30,11 @@ You must include, before the first milestone, a list of technical invariants and
 
 Milestones must form the bulk of your plan, and serve to split the implementation into incremental, additive, and independently verifiable changes. They should include:
 
-- a brief that describes the technical scope of the milestone
-- a list of concrete changes and tasks to with specific pseudocode and illustrative small code snippets
+- a description of the milestone's technical scope.
+- a list of concrete changes and tasks to with specific pseudocode or small illustrative code snippets.
 - acceptance criteria by which to judge success or failure of the milestone.
+
+Never write complete code in the plan. The objective is to communicate, coarsely, the desired structure and direction. The agent or human that implements the plan should still have leeway when it comes to literal implementation, as opposed to copy/pasting the plan's code snippets.
 
 It can be a good idea to include explicit prototyping milestones in order to de-risk a larger change. For example, by validating wanted behavior and feasibility through an isolated test script before applying it broadly. For prototype milestones, they should be clearly labeled, describe how observe results, and state how to promote or discard the prototype.
 
