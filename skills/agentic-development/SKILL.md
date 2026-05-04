@@ -12,7 +12,8 @@ Follow these steps when implementing a tech spec plan:
 1. Implement changes for only the next milestone, following the workflow and language-specific guidelines.
 2. After finishing a milestone and **before** committing, tell a subagent to review the changes via the $caveman-review skill. Address any feedback it provides.
 3. Always `git commit` between milestones. Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when writing commit messages. For breaking changes, use the `!` type syntax.
-4. Repeat steps 1-3 until all milestones are complete.
+4. Stop the subagent, and repeat steps 1-4 until all milestones are complete.
+5. Spawn a new subagent to do a final review of all code changed over every milestone, and address any of its feedback.
 5. Always `git push` before finishing.
 6. If a draft PR does not already exist, create one with a title based on the plan name, also following the conventional commits spec.
 
