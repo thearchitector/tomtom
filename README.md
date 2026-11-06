@@ -2,19 +2,29 @@
 
 An atlas of guidelines and skills for agentic development.
 
-## Setup
-
-Agents love the `gh` command. [Install](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian) it.
-
-Several CLI utilities are also assumed to exist by several skills. Install them via:
+Install this repository as a marketplace and global plugin:
 
 ```bash
-$ pnpm -g install
+codex plugin marketplace add git@github.com:thearchitector/tomtom.git
+codex plugin add tomtom@thearchitector
 ```
 
-Finally, copy this codex config file and install skills these: 
+To update:
 
 ```bash
-$ cp codex.toml ~/.codex/config.toml
-$ ln -sd <path to tomtom>/skills ~/.codex/skills/tomtom
+codex plugin marketplace upgrade thearchitector
+codex plugin remove tomtom@thearchitector
+codex plugin add tomtom@thearchitector
 ```
+
+## Vendored third party skills
+
+TomTom vendors generally useful skills from third parties using Vercel's skills package. To add another, run:
+
+```bash
+DO_NOT_TRACK=1 pnx skills@latest add <ref> -a openclaw
+```
+
+I use Codex, but the OpenClaw argument tells `skills` to vendor skills into the repository's `skills` directory, where plugins expect them.
+
+All the vendored skills can be identified via the [`skills-lock.json`](./skills-lock.json)
