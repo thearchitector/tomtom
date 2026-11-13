@@ -28,8 +28,9 @@ Only use the `library` and `docs` subcommands; pipe the output to other tools wh
 - Don't be defensive; instead, assert invariants:
     - If a function can assume is something is true, either mechanically (ie: argument type) or behaviorally (ie: never concurrent), don't add complexity, logic, and test cases to account for when it isn't (ex: use `assert` instead of `if/raise`).
     - Assertions are like executable comments describing some detail of the truth about the function, form, and/or behavior of the program.
+    - Only assert when actually needed to resolve otherwise implicit ambiguity. If code must already be valid given static typing, logic, or functionality (first and/or third party), assertions are redundant.
 
 # Writing tests
 
 - Always use the `tdd` skill. Test behavior, not representations or implementations.
-- Never test third party libraries; assume they have been tested and work as advertised.
+- Never test functionality or behavior of third party libraries; assume they have been tested and work as advertised.

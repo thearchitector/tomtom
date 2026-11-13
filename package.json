@@ -1,0 +1,27 @@
+{
+  "name": "tomtom",
+  "version": "0.0.0",
+  "description": "An atlas of guidelines and skills for agentic development.",
+  "keywords": [
+    "pi-package"
+  ],
+  "author": {
+    "name": "Elias Gabriel",
+    "email": "oss@eliasfgabriel.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thearchitector/tomtom.git"
+  },
+  "files": [
+    "skills",
+    ".agents/skills",
+    "skills-lock.json"
+  ],
+  "pi": {
+    "skills": [
+      "./skills",
+      "./.agents/skills"
+    ]
+  }
+}

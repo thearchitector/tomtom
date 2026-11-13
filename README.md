@@ -1,20 +1,13 @@
 # tomtom
 
-An atlas of guidelines and skills for agentic development.
+An atlas of guidelines and skills for agentic development, distributed as a [Pi package](https://pi.dev/docs/latest/packages).
 
-Install this repository as a marketplace and global plugin:
-
-```bash
-codex plugin marketplace add git@github.com:thearchitector/tomtom.git
-codex plugin add tomtom@thearchitector
-```
-
-To update:
+Install globally:
 
 ```bash
-codex plugin marketplace upgrade thearchitector
-codex plugin remove tomtom@thearchitector
-codex plugin add tomtom@thearchitector
+pi install git:github.com/thearchitector/tomtom
+# to update
+pi update git:github.com/thearchitector/tomtom
 ```
 
 ## Vendored third party skills
@@ -22,9 +15,7 @@ codex plugin add tomtom@thearchitector
 TomTom vendors generally useful skills from third parties using Vercel's skills package. To add another, run:
 
 ```bash
-DO_NOT_TRACK=1 pnx skills@latest add <ref> -a openclaw
+DO_NOT_TRACK=1 pnx skills@latest add <ref>
 ```
-
-I use Codex, but the OpenClaw argument tells `skills` to vendor skills into the repository's `skills` directory, where plugins expect them.
 
 All the vendored skills can be identified via the [`skills-lock.json`](./skills-lock.json)
