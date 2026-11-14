@@ -5,7 +5,7 @@ description: Design and coding guidelines. Always reference when designing, impl
 
 # Global quality objective
 
-**IMPORTANT**: When designing or implementing a plan, or any code changes, ALWAYS minimize added lines (excluding new lines) while maximizing deleted lines (excluding new lines) in the git diff against the base branch. This most often should be reflected through narrower, more specific, and better designed patterns / code / architecture.
+**IMPORTANT**: When designing or implementing a plan, or any code changes, ALWAYS minimize added lines (excluding new lines) while maximizing deleted lines (excluding new lines) in the git diff against the base branch. Achieve this through narrower, more specific, and better designs / patterns / code / architecture.
 
 This applies to all files that are checked into a git repo.
 
