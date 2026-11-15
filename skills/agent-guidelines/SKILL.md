@@ -13,7 +13,7 @@ Always follow this rule, unless explicitly stated otherwise by the human.
 
 # Using Context7 to fetch library and API documentation
 
-Always use the Context7 CLI (`ctx7`) when you need library / API documentation: `CTX7_TELEMETRY_DISABLED=1 pnx ctx7 <rest of command>`.
+Always use the Context7 CLI (`ctx7` bin relative to this `SKILL.md` file) when you need library / API documentation: `CTX7_TELEMETRY_DISABLED=1 ../../node_modules/.bin/ctx7 <rest of command>`.
 
 Only use the `library` and `docs` subcommands; pipe the output to other tools where useful, passing `--json` if you need JSON output (ie: to `jq`).
 
