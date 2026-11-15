@@ -14,18 +14,11 @@
     "url": "https://github.com/thearchitector/tomtom.git"
   },
   "files": [
-    "extensions",
     "skills",
     ".agents/skills",
     "skills-lock.json"
   ],
-  "peerDependencies": {
-    "@earendil-works/pi-coding-agent": "*"
-  },
   "pi": {
-    "extensions": [
-      "./extensions/terse.ts"
-    ],
     "skills": [
       "./skills",
       "./.agents/skills"
