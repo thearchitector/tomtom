@@ -3,4 +3,4 @@ description: Run a code review
 argument-hint: "<scope>"
 ---
 
-Run `pi list` to get the installed package root, then reference both `.agents/skills/deep-code-review/SKILL.md` and `.agents/skills/code-review/SKILL.md` to run a code review. Focus on $1.
+Run `pi list` to locate the TomTom's package root. Read and execute `.agents/skills/deep-code-review/SKILL.md` and `.agents/skills/code-review/SKILL.md`, resolving supporting files relative to their skill directories. Focus on $1, using a Sol/xhigh profile.

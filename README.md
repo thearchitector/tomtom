@@ -1,6 +1,6 @@
 # tomtom
 
-An atlas of guidelines and skills for agentic development, distributed as a [Pi package](https://pi.dev/docs/latest/packages).
+An atlas of stuff for agentic interaction, distributed as a [Pi package](https://pi.dev/docs/latest/packages).
 
 Install globally:
 
@@ -10,16 +10,15 @@ pi install git:github.com/thearchitector/tomtom
 pi update git:github.com/thearchitector/tomtom
 ```
 
-## Code review
+## Prompts
 
-- `/review main` checks changes since the merge base with `main` against repo standards and the originating spec.
-- `/review deep` runs a deeper, evidence-based review. Add a scope, for example `/review deep whole repository`.
-
-Both review workflows are vendored through Vercel Skills in `.agents/skills/` like the other skills. Pi skips them during skill discovery via `.agents/skills/.ignore`, so they're available through `/review` but not as `/skill:` commands.
+- To develop an idea, use `/grill <topic>`.
+- When directing an agent to implement changes, use `/implement <ask>`.
+- To run a code review, use `/review <scope of focus>`.
 
 ## Vendored third party skills
 
-TomTom vendors generally useful skills from third parties using Vercel's skills package. To add another, run:
+TomTom uses Vercel's skills package to vendor generally useful skills from third parties into specific prompts. To add another, run:
 
 ```bash
 DO_NOT_TRACK=1 pnx skills@latest add <ref>

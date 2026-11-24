@@ -1,7 +1,9 @@
 ---
-name: agent-guidelines
-description: Design and coding guidelines. Always reference when designing, implementing, or reviewing any code changes.
+description: Design and coding guidelines
+argument-hint: "<ask>"
 ---
+
+Implement $1. Follow these guidelines, using `pi list` to resolve paths relative to TomTom's package root:
 
 # Global quality objective
 
@@ -13,9 +15,9 @@ Always follow this rule, unless explicitly stated otherwise by the human.
 
 # Using Context7 to fetch library and API documentation
 
-Always use the Context7 CLI (`ctx7` bin relative to this `SKILL.md` file) when you need library / API documentation: `CTX7_TELEMETRY_DISABLED=1 ../../node_modules/.bin/ctx7 <rest of command>`.
+Use the Context7 CLI (relative bin `ctx7`) when you need library / API documentation: `CTX7_TELEMETRY_DISABLED=1 ../../node_modules/.bin/ctx7 <rest of command>`.
 
-Only use the `library` and `docs` subcommands; pipe the output to other tools where useful, passing `--json` if you need JSON output (ie: to `jq`).
+Only use the `library` and `docs` subcommands.
 
 # Writing source code
 
@@ -30,7 +32,9 @@ Only use the `library` and `docs` subcommands; pipe the output to other tools wh
     - Assertions are like executable comments describing some detail of the truth about the function, form, and/or behavior of the program.
     - Only assert when actually needed to resolve otherwise implicit ambiguity. If code must already be valid given static typing, logic, or functionality (first and/or third party), assertions are redundant.
 
+- If Postgres work is involved, read and reference `.agents/skills/supabase-postgres-best-practices/SKILL.md`.
+
 # Writing tests
 
-- Always use the `tdd` skill. Test behavior, not representations or implementations.
+- Read and follow `.agents/skills/tdd/SKILL.md`; Test behavior, not representations or implementations.
 - Never test functionality or behavior of third party libraries; assume they have been tested and work as advertised.
