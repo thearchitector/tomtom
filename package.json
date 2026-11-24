@@ -19,12 +19,14 @@
   "files": [
     "skills",
     ".agents/skills",
+    "prompts",
     "skills-lock.json"
   ],
   "pi": {
     "skills": [
       "./skills",
       "./.agents/skills"
-    ]
+    ],
+    "prompts": ["./prompts/review.md"]
   }
 }
